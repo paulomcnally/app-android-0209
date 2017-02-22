@@ -30,22 +30,31 @@ public class MainActivity extends AppCompatActivity {
 
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
 
+       //Log.i(TAG,  apiInterface.getTweets().request().url().toString());
+
         Call<List<Tweet>> call = apiInterface.getTweets();
         call.enqueue(new Callback<List<Tweet>>() {
             @Override
             public void onResponse(Call<List<Tweet>> call, Response<List<Tweet>> response) {
+                Log.i(TAG, response.body().toString());
+
+                /*
+                Log.i(TAG, "Called");
                 if(response != null) {
-                    Log.i(TAG, response.body().toString());
+
                     for(Tweet tweet : response.body()) {
 
                         Log.i(TAG, tweet.getText());
                     }
+                } else {
+                    Log.i(TAG, "Response es nulo");
                 }
+                */
             }
 
             @Override
             public void onFailure(Call<List<Tweet>> call, Throwable t) {
-
+                Log.i(TAG, t.getMessage());
             }
         });
     }
