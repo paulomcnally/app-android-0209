@@ -35,7 +35,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Tweet>> call, Response<List<Tweet>> response) {
                 if(response != null) {
+                    Log.i(TAG, response.body().toString());
                     for(Tweet tweet : response.body()) {
+
                         Log.i(TAG, tweet.getText());
                     }
                 }
