@@ -10,4 +10,5 @@
 
     <string name="activity_sign_up_message_empty_email">Chele, pone un correo.</string>
     <string name="activity_sign_up_message_empty_password">Chole, te falto la contrasena.</string>
+    <string name="title_activity_sign_in">SignInActivity</string>
 </resources>

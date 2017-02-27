@@ -15,6 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import uca.desapp.api.Api;
 import uca.desapp.api.ApiInterface;
 import uca.desapp.models.Tweet;
+import uca.desapp.ui.activities.SignInActivity;
 import uca.desapp.ui.activities.SignUpActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
+        Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
         startActivity(intent);
     }
 
