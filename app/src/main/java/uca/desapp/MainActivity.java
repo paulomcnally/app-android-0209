@@ -1,5 +1,6 @@
 package uca.desapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import uca.desapp.api.Api;
 import uca.desapp.api.ApiInterface;
 import uca.desapp.models.Tweet;
+import uca.desapp.ui.activities.SignUpActivity;
 
 public class MainActivity extends AppCompatActivity {
     private final static String TAG = "MainActivity";
@@ -71,6 +73,9 @@ public class MainActivity extends AppCompatActivity {
                 Log.i(TAG, t.getMessage());
             }
         });
+
+        Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
+        startActivity(intent);
     }
 
 

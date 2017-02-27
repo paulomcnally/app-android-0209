@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Demo Api REST</string>
+
+    <!-- sign up -->
+    <string name="title_activity_sign_up">Registro</string>
+    <string name="activity_sign_up_button_sign_up">Registrarme</string>
+    <string name="activity_sign_up_button_sign_in">Iniciar sesion</string>
+    <string name="activity_sign_up_edit_text_email">Correo electronico</string>
+    <string name="activity_sign_up_edit_text_password">Contrasena</string>
+
+    <string name="activity_sign_up_message_empty_email">Chele, pone un correo.</string>
+    <string name="activity_sign_up_message_empty_password">Chole, te falto la contrasena.</string>
 </resources>

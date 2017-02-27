@@ -7,6 +7,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import uca.desapp.models.Tweet;
+import uca.desapp.models.User;
 
 public interface ApiInterface {
 
@@ -15,4 +16,7 @@ public interface ApiInterface {
 
     @POST("tweets")
     Call<Tweet> createTweet(@Body Tweet tweet);
+
+    @POST("Users")
+    Call<User> signUp(@Body User user);
 }
