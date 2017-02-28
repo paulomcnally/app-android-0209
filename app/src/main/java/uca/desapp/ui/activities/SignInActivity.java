@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,21 +41,31 @@ public class SignInActivity extends AppCompatActivity {
 
     @OnClick(R.id.sign_in)
     public void signIn(View view) {
-        User user = new User();
-        user.setEmail("juan.perez@google.com");
-        user.setPassword("123456789");
-        Call<SignInResponseModel> call = Api.instance().signIn(user);
-        call.enqueue(new Callback<SignInResponseModel>() {
-            @Override
-            public void onResponse(Call<SignInResponseModel> call, Response<SignInResponseModel> response) {
-                Log.i("tag", response.body().getId());
-            }
+        if(email.getText().toString().isEmpty()) {
+            Toast.makeText(getApplicationContext(), getString(
+                    R.string.activity_sign_up_message_empty_email),
+                    Toast.LENGTH_LONG).show();
+        } else if(password.getText().toString().isEmpty()) {
+            Toast.makeText(getApplicationContext(), getString(
+                    R.string.activity_sign_up_message_empty_password),
+                    Toast.LENGTH_LONG).show();
+        } else {
+            User user = new User();
+            user.setEmail(email.getText().toString());
+            user.setPassword(password.getText().toString());
+            Call<SignInResponseModel> call = Api.instance().signIn(user);
+            call.enqueue(new Callback<SignInResponseModel>() {
+                @Override
+                public void onResponse(Call<SignInResponseModel> call, Response<SignInResponseModel> response) {
+                    Log.i("tag", response.body().getId());
+                }
 
-            @Override
-            public void onFailure(Call<SignInResponseModel> call, Throwable t) {
+                @Override
+                public void onFailure(Call<SignInResponseModel> call, Throwable t) {
 
-            }
-        });
+                }
+            });
+        }
     }
 
 }

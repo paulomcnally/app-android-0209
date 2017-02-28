@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<List<Tweet>> call, Response<List<Tweet>> response) {
 
 
-                if(response != null) {
+                if(response != null && response.body() != null) {
 
                     for(Tweet tweet : response.body()) {
 
