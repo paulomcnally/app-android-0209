@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.tumblr.remember.Remember;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -20,6 +22,7 @@ import uca.desapp.R;
 import uca.desapp.api.Api;
 import uca.desapp.models.SignInResponseModel;
 import uca.desapp.models.User;
+import uca.desapp.utils.SessionUtil;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -57,12 +60,21 @@ public class SignInActivity extends AppCompatActivity {
             call.enqueue(new Callback<SignInResponseModel>() {
                 @Override
                 public void onResponse(Call<SignInResponseModel> call, Response<SignInResponseModel> response) {
-                    Log.i("tag", response.body().getId());
+                    if(response != null && response.body() != null) {
+                        // store access token
+                        Remember.putString(SessionUtil.ACCESS_TOKEN, response.body().getId());
+
+                        // close activity
+                        finish();
+                    }
+                    else {
+                        Log.i("tag", "Response es nula");
+                    }
                 }
 
                 @Override
                 public void onFailure(Call<SignInResponseModel> call, Throwable t) {
-
+                    Log.e("tag", t.getMessage());
                 }
             });
         }

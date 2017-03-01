@@ -4,7 +4,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Api {
-    private final static String URL = "https://api-demo-uca.herokuapp.com/api";
+    private final static String URL = "http://192.168.43.8:3000/api";
 
     public static String getBase() {
         return URL + "/";

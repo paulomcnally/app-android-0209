@@ -17,6 +17,7 @@ import uca.desapp.api.ApiInterface;
 import uca.desapp.models.Tweet;
 import uca.desapp.ui.activities.SignInActivity;
 import uca.desapp.ui.activities.SignUpActivity;
+import uca.desapp.utils.SessionUtil;
 
 public class MainActivity extends AppCompatActivity {
     private final static String TAG = "MainActivity";
@@ -75,8 +76,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
-        startActivity(intent);
+        if(!SessionUtil.isActive()) {
+            Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
+            startActivity(intent);
+        }
     }
 
 
